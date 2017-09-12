@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовое задание Vue.js</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+<div class="container col-sm-10 col-sm-offset-1">
+    <h2>List of users</h2>
+    <p>Test task for DevHouse company on Vue.js</p>
+    <div id="app">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr class="success">
+                <th>№</th>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th class="edit_column">Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(user, index) in users" class="active">
+                <td class="numbers_column">{{index + 1}}.</td>
+                <td>{{ user.id }}</td>
+                <td>{{user.username}}</td>
+                <td >{{user.email}}</td>
+                <td><button type="button"  class="btn btn-sm glyphicon glyphicon-pencil" data-toggle="modal" data-target="#myModal" v-on:click="edit(index)"></button></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <form>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="username" type="text" v-model="user.username" class="form-control" name="username" placeholder="Username" required>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" v-model="user.email" >
+                            </div>
+                        </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="saveUser">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="script.js"></script>
+</body>
+</html>

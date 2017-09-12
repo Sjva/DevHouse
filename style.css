@@ -1,0 +1,9 @@
+body{
+    background-color: whitesmoke;
+}
+.numbers_column,.edit_column{
+    width: 5%;
+}
+.input-group{
+    margin:5% 0;
+}
